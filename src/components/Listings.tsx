@@ -2,6 +2,7 @@ import React from 'react';
 import { Listings as IListings } from '../types/types';
 import { ProductGalleryView } from './ProductGalleryView/ProductGalleryView';
 import { getListings } from '../api/getListings';
+import { Sorter } from './Sorter/Sorter';
 
 export function Listings() {
   const [listings, setListings] = React.useState<IListings | null>(null);
@@ -33,19 +34,7 @@ export function Listings() {
   if (listings?.products && listings?.products.length > 1) {
     return (
       <div className="p-5">
-        <div>
-          <label htmlFor="select-sort-method">
-            Sort by
-            <div>
-              <select id="select-sort-method" onChange={handleChangeSort}>
-                <option value="1">Recommended</option>
-                <option value="2">Lowest price</option>
-                <option value="3">Highest price</option>
-                <option value="4">Highest discount</option>
-              </select>
-            </div>
-          </label>
-        </div>
+        <Sorter onChange={handleChangeSort} />
 
         <ProductGalleryView products={listings.products} />
       </div>
