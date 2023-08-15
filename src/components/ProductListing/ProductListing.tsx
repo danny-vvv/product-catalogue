@@ -7,7 +7,7 @@ type ProductListingProps = {
 
 export function ProductListing({ product }: ProductListingProps) {
   return (
-    <div>
+    <div className="max-w-sm">
       <h2>{product.productName}</h2>
       <img src={product.image.url} alt={product.productName} />
       <p>

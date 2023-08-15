@@ -8,7 +8,7 @@ interface ProductGalleryViewProps {
 
 export function ProductGalleryView({ products }: ProductGalleryViewProps) {
   return (
-    <div>
+    <div className="grid grid-cols-3 gap-4">
       {products.map((product) => {
         return <ProductListing key={product.id} product={product} />;
       })}
