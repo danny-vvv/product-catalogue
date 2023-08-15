@@ -8,10 +8,13 @@ type ProductListingProps = {
 export function ProductListing({ product }: ProductListingProps) {
   return (
     <div className="max-w-sm">
-      <h2>{product.productName}</h2>
       <img src={product.image.url} alt={product.productName} />
+
+      <h2 className="font-semibold">{product.productName}</h2>
+
       <p>
-        {product.price.priceIncTax} {product.price.currencyCode}
+        {/* Would need to handle other currencies (product.price.currencyCode) */}
+        £{product.price.priceIncTax}
       </p>
     </div>
   );
