@@ -72,7 +72,11 @@ export function Listings() {
         </div>
 
         <div>
-          <Sorter onChange={handleChangeSort} />
+          <div className="flex justify-between">
+            <Sorter onChange={handleChangeSort} />
+
+            <p>{listings.pagination.total} results</p>
+          </div>
 
           {listings?.products && listings?.products.length > 1 ? (
             <ProductGalleryView products={listings.products} />
