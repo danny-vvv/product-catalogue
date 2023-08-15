@@ -6,9 +6,10 @@ type SorterProps = {
 
 export function Sorter({ onChange }: SorterProps) {
   return (
-    <div>
+    <div className="p-3">
       <label htmlFor="select-sort-method">
-        Sort by
+        <span className="text-lg">Sort by</span>
+
         <div>
           <select id="select-sort-method" onChange={onChange}>
             <option value="1">Recommended</option>

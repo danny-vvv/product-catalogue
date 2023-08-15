@@ -64,9 +64,9 @@ export function Listings() {
     <div className="p-5">
       <div className="flex flex-row gap-5">
         <div className="w-72">
-          <h2 className="text-2xl font-semibold">Filter by</h2>
+          <h2 className="text-2xl font-semibold mb-2">Filter by</h2>
 
-          <div className="bg-white p-3">
+          <div className="bg-white p-3 rounded">
             <PriceFilter onFilter={handleFilterPrice} />
           </div>
         </div>
