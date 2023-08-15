@@ -1,7 +1,7 @@
 import React from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { Listings as IListings } from '../types/types';
-import { ProductListing } from './ProductListing/ProductListing';
+import { ProductGalleryView } from './ProductGalleryView/ProductGalleryView';
 
 export function Listings() {
   const [listings, setListings] = React.useState<IListings | null>(null);
@@ -31,15 +31,17 @@ export function Listings() {
 
   console.log(listings);
 
-  return (
-    <div>
-      {listings ? (
-        listings.products?.map((product) => {
-          return <ProductListing key={product.id} product={product} />;
-        })
-      ) : (
-        <p>No products found</p>
-      )}
-    </div>
-  );
+  if (listings === null) {
+    return <p>Loading...</p>;
+  }
+
+  if (listings?.products && listings?.products.length > 1) {
+    return (
+      <div>
+        <ProductGalleryView products={listings.products} />
+      </div>
+    );
+  }
+
+  return <p>No products found</p>;
 }
