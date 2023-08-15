@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Listings as IListings } from '../types/types';
 
 export function Listings() {
-  const [listings, setListings] = React.useState<IListings | []>([]);
+  const [listings, setListings] = React.useState<IListings | null>(null);
 
   React.useEffect(() => {
     async function getListings() {
@@ -32,7 +32,21 @@ export function Listings() {
 
   return (
     <div>
-      <h2> Listings </h2>
+      {listings ? (
+        listings.products?.map((product) => {
+          return (
+            <div key={product.id}>
+              <h2>{product.productName}</h2>
+              <img src={product.image.url} alt={product.productName} />
+              <p>
+                {product.price.priceIncTax} {product.price.currencyCode}
+              </p>
+            </div>
+          );
+        })
+      ) : (
+        <p>No products found</p>
+      )}
     </div>
   );
 }
