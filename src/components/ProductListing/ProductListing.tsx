@@ -40,7 +40,9 @@ export function ProductListing({ product }: ProductListingProps) {
         {/* Rating seems to be out of 5, representing stars, but would need to confirm this. */}
         {/* TODO: Add star icons */}
         <p>
-          {product.averageRating} stars from {product.reviewsCount} reviews
+          {product.reviewsCount === 0
+            ? 'No reviews'
+            : `${product.averageRating} stars from ${product.reviewsCount} reviews`}
         </p>
       </div>
     </div>
