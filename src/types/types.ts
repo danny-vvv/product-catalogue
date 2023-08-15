@@ -1,7 +1,7 @@
 export interface Listings {
   pagination: Pagination;
   facets?: FacetsEntity[] | null;
-  products?: ProductsEntity[] | null;
+  products?: ProductEntity[] | null;
 }
 
 export interface Pagination {
@@ -33,7 +33,7 @@ export interface Value {
   lte?: number | null;
 }
 
-export interface ProductsEntity {
+export interface ProductEntity {
   id: string;
   legacyId?: string | null;
   legacyVariantId?: string | null;
