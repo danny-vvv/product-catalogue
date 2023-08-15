@@ -3,12 +3,7 @@ import { Listings as IListings } from '../types/types';
 import { ProductGalleryView } from './ProductGalleryView/ProductGalleryView';
 import { getListings } from '../api/getListings';
 import { Sorter } from './Sorter/Sorter';
-import { useForm, SubmitHandler } from 'react-hook-form';
-
-type Inputs = {
-  gte: number;
-  lte: number;
-};
+import { PriceFilter, PriceFilterInputs } from './PriceFilter/PriceFilter';
 
 type SearchParameters = {
   sort: number;
@@ -47,27 +42,19 @@ export function Listings() {
     }));
   }
 
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors }, // TODO: error handling
-  } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-
+  function handleFilterPrice({ gte, lte }: PriceFilterInputs) {
     setSearchParameters((previousState) => ({
       ...previousState,
       prices: [
         {
           value: {
-            gte: data.gte,
-            lte: data.lte,
+            gte,
+            lte,
           },
         },
       ],
     }));
-  };
+  }
 
   if (listings === null) {
     return <p>Loading...</p>;
@@ -80,47 +67,7 @@ export function Listings() {
           <h2 className="text-2xl font-semibold">Filter by</h2>
 
           <div className="bg-white p-3">
-            <h3 className="text-xl">Price (£)</h3>
-
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex flex-col gap-3">
-                <label>
-                  Min
-                  <div>
-                    <input
-                      type="text"
-                      {...register('gte')}
-                      className="border-2 border-black w-full"
-                    />
-                  </div>
-                </label>
-
-                <label>
-                  Max
-                  <div>
-                    <input
-                      type="text"
-                      {...register('lte')}
-                      className="border-2 border-black w-full"
-                    />
-                  </div>
-                </label>
-
-                <button
-                  type="submit"
-                  className="bg-gray-400 text-white font-semi-bold w-full"
-                >
-                  Go
-                </button>
-
-                <button
-                  type="reset"
-                  className="w-full border-solid border-2 border-gray-400"
-                >
-                  Reset
-                </button>
-              </div>
-            </form>
+            <PriceFilter onFilter={handleFilterPrice} />
           </div>
         </div>
 
