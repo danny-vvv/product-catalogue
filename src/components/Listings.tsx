@@ -112,6 +112,13 @@ export function Listings() {
                 >
                   Go
                 </button>
+
+                <button
+                  type="reset"
+                  className="w-full border-solid border-2 border-gray-400"
+                >
+                  Reset
+                </button>
               </div>
             </form>
           </div>
