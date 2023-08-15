@@ -36,6 +36,7 @@ export function ProductListing({ product }: ProductListingProps) {
         <p>✅ In stock</p>
 
         {/* Rating seems to be out of 5, representing stars, but would need to confirm this. */}
+        {/* TODO: Add star icons */}
         <p>
           {product.averageRating} stars from {product.reviewsCount} reviews
         </p>
