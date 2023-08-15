@@ -17,6 +17,10 @@ export function Listings() {
             size: 0,
             additionalPages: 0,
             sort: 1,
+            // 1: Recommended (?)
+            // 2: Lowest price
+            // 3: Highest price
+            // 4: Highest discount
           }
         );
 
@@ -38,6 +42,20 @@ export function Listings() {
   if (listings?.products && listings?.products.length > 1) {
     return (
       <div className="p-5">
+        <div>
+          <label htmlFor="select-sort-method">
+            Sort by
+            <div>
+              <select id="select-sort-method">
+                <option>Recommended</option>
+                <option>Lowest price</option>
+                <option>Highest price</option>
+                <option>Highest discount</option>
+              </select>
+            </div>
+          </label>
+        </div>
+
         <ProductGalleryView products={listings.products} />
       </div>
     );
