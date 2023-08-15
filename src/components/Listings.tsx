@@ -1,6 +1,7 @@
 import React from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { Listings as IListings } from '../types/types';
+import { ProductListing } from './ProductListing/ProductListing';
 
 export function Listings() {
   const [listings, setListings] = React.useState<IListings | null>(null);
@@ -34,15 +35,7 @@ export function Listings() {
     <div>
       {listings ? (
         listings.products?.map((product) => {
-          return (
-            <div key={product.id}>
-              <h2>{product.productName}</h2>
-              <img src={product.image.url} alt={product.productName} />
-              <p>
-                {product.price.priceIncTax} {product.price.currencyCode}
-              </p>
-            </div>
-          );
+          return <ProductListing key={product.id} product={product} />;
         })
       ) : (
         <p>No products found</p>
