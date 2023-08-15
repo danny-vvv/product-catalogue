@@ -16,7 +16,9 @@ export function ProductListing({ product }: ProductListingProps) {
           alt={product.brand.name}
           className="w-24"
         />
+
         <h2 className="font-semibold">{product.productName}</h2>
+
         <p>
           {/* Would need to handle other currencies (product.price.currencyCode) */}
           <span className="text-2xl font-bold text-red-600">
