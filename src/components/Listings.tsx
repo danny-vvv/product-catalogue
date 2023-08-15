@@ -1,37 +1,20 @@
 import React from 'react';
-import axios, { AxiosResponse } from 'axios';
 import { Listings as IListings } from '../types/types';
+
 import { ProductGalleryView } from './ProductGalleryView/ProductGalleryView';
+import { getListings } from '../api/getListings';
 
 export function Listings() {
   const [listings, setListings] = React.useState<IListings | null>(null);
 
   React.useEffect(() => {
-    async function getListings() {
-      try {
-        const response: AxiosResponse<IListings> = await axios.post(
-          'https://spanishinquisition.victorianplumbing.co.uk/interviews/listings?apikey=yj2bV48J40KsBpIMLvrZZ1j1KwxN4u3A83H8IBvI',
-          {
-            query: 'toilets',
-            pageNumber: 0,
-            size: 0,
-            additionalPages: 0,
-            sort: 1,
-            // 1: Recommended (?)
-            // 2: Lowest price
-            // 3: Highest price
-            // 4: Highest discount
-          }
-        );
-
-        setListings(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+    async function fetchData() {
+      const listings = await getListings();
+      setListings(listings);
     }
 
-    getListings();
-  }, []);
+    fetchData();
+  }, [listings]);
 
   console.log(listings);
 
