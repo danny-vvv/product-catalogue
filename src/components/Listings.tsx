@@ -16,6 +16,7 @@ export function Listings() {
     fetchData();
   }, [listings]);
 
+  // TODO: delete this when done:
   console.log(listings);
 
   if (listings === null) {
