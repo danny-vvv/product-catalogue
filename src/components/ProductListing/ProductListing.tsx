@@ -10,7 +10,7 @@ export function ProductListing({ product }: ProductListingProps) {
     <div className="max-w-sm bg-white flex flex-col">
       <img src={product.image.url} alt={product.productName} />
 
-      <div className="p-3">
+      <div className="p-3 grid grid-cols-1 gap-1">
         <img
           src={product.brand.brandImage.url}
           alt={product.brand.name}
