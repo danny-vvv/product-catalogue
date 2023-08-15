@@ -37,7 +37,7 @@ export function Listings() {
 
   if (listings?.products && listings?.products.length > 1) {
     return (
-      <div>
+      <div className="p-5">
         <ProductGalleryView products={listings.products} />
       </div>
     );

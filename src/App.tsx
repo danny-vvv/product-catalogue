@@ -3,7 +3,7 @@ import { Listings } from './components/Listings';
 
 function App() {
   return (
-    <div className="container mx-auto p-4">
+    <div className="bg-neutral-200">
       <Listings />
     </div>
   );

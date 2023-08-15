@@ -10,12 +10,14 @@ export function ProductListing({ product }: ProductListingProps) {
     <div className="max-w-sm bg-white flex flex-col">
       <img src={product.image.url} alt={product.productName} />
 
-      <h2 className="font-semibold">{product.productName}</h2>
+      <div className="p-3">
+        <h2 className="font-semibold">{product.productName}</h2>
 
-      <p>
-        {/* Would need to handle other currencies (product.price.currencyCode) */}
-        £{product.price.priceIncTax}
-      </p>
+        <p>
+          {/* Would need to handle other currencies (product.price.currencyCode) */}
+          £{product.price.priceIncTax}
+        </p>
+      </div>
     </div>
   );
 }
